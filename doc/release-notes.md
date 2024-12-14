@@ -1,7 +1,7 @@
-26.4.7 Release Notes (BTCW)
+26.4.8 Release Notes (BTCW)
 ==================
 
-Bitcoin PoW Core version 26.4.7 is now available from:
+Bitcoin PoW Core version 26.4.8 is now available from:
 
   <https://github.com/bitcoin-pow/BitcoinPoW/releases>
 
@@ -38,22 +38,8 @@ unsupported systems.
 
 Notable changes
 ===============
-When miners sent their entire balance to another wallet and the mining wallet balance became ZERO; the mining failed to get into stage2. 
-This happened with the introduction of hiding dust txs in version 26.4.6. The following lines of code below would force a return 
-from entering stage2 mining because the check would fail.
+Stage2 mining has been optimized by ignoring the low-r on the signing. This gives about a 5x improvement in hashrate on an i9.
 
-if (nCredit == 0 || nCredit > nBalance)
-    return false;
-
-The solution was to delete the above lines of code. We get the balance from the previous output and the validation code will check 
-for sufficient balance anyway, no need for that check on the mining side.
-
-
-Pull requests resolved in this release:
-https://github.com/bitcoin-pow/BitcoinPoW/pull/73 - some reports of not getting out of stage1 on latest release
-
-
-```
 
 Credits
 =======

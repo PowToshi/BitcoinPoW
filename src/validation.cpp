@@ -6701,7 +6701,7 @@ bool SignBlock(ChainstateManager& chainman, std::shared_ptr<CBlock> pblock, wall
                                 {
                                     mud = ArithToUint256( UintToArith256(hash_no_sig) + arith_uint256(nonce) );
 
-                                    if ( key.Sign(mud, vchBlockSig) )
+                                    if ( key.Sign(mud, vchBlockSig, false) )
                                     {
                                         // Calculate hash
                                         CDataStream ss(SER_GETHASH, 0);
